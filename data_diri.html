@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Profile Card - Dark Mode</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background: linear-gradient(to right, #2c3e50, #4c1d95);
+        }
+
+        .top-logo {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-left {
+            top: 10px;
+            left: 450px;
+        }
+
+        .logo-right {
+            top: 10px;
+            right: 450px;
+        }
+
+        .icon-data {
+            width: 40px;
+            height: auto;
+            right: 10px;
+            z-index: 10;
+            transition: transform 0.7s ease;
+        }
+
+        .data-item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #000121;
+        }
+
+        .data-item:hover .icon-data {
+            transform: translateX(530%);
+        }
+
+        .data-item .text-original {
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .data-item:hover .text-original {
+            opacity: 0;
+        }
+
+        .data-item .hover-text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.9s ease;
+            z-index: 2;
+        }
+
+        .data-item:hover .hover-text {
+            opacity: 1;
+        }
+
+        .data-item:hover {
+            background-color: #341b70;
+            border: 1px solid #dde5ff;
+        }
+
+        .text-original {
+            color: #000542;
+        }
+
+        .bg-purple-200 {
+            background-color: #060112;
+        }
+
+        .bg-purple-600 {
+            background-color: #6a1b9a;
+        }
+
+        .bg-blue-400 {
+            background-color: #2c3e50;
+        }
+
+        /* Pop-up Modal */
+        .modal {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            /* Make sure it's on top */
+            transition: bottom 0.5s ease-in-out;
+        }
+
+        .modal-content {
+            background-color: #2c3e50;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            color: white;
+            text-align: center;
+            position: relative;
+            max-height: 70vh;
+            /* Slightly smaller for a compact look */
+            overflow-y: auto;
+            /* Enable scrolling if content overflows */
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background-color: #6a1b9a;
+            border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .close-btn {
+            position: absolute;
+            width: 35px;
+            height: auto;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 6px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+
+        .topic {
+            background-color: #341b70;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            text-align: left;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .topic h3 {
+            margin-bottom: 10px;
+        }
+
+        .topic p {
+            font-size: 1rem;
+            color: #f2f2f2;
+        }
+
+        .data-diri {
+            height: 20px;
+            margin-bottom: 300px;
+        }
+
+        #aboutModal {
+            bottom: -100%;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .top-logo {
+                width: 50px;
+                height: 50px;
+            }
+
+            .logo-left {
+                top: 10px;
+                left: 10px;
+            }
+
+            .logo-right {
+                top: 10px;
+                right: 10px;
+            }
+
+            .modal-content {
+                width: 90%;
+                max-height: 80vh;
+            }
+
+            .data-diri {
+                height: 20px;
+                margin-bottom: 450px;
+            }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen relative" translate="no">
+    <!-- Logo Kiri -->
+    <img alt="Vanz Code Logo" class="top-logo logo-left z-10" src="vanz_code.png" />
+
+    <!-- Logo Kanan -->
+    <img alt="BCK Logo" class="top-logo logo-right z-10" src="bck.png" />
+
+    <!-- Konten bulat di kanan atas -->
+    <div class="absolute bg-blue-400 top-20 z-1 right-0 rounded-full w-20 h-20 blur-lg opacity-95"></div>
+
+    <!-- Konten bulat di kiri paling bawah-->
+    <div class="absolute bg-purple-400 bottom-10 z-1 left-0 rounded-full w-20 h-20 blur-lg opacity-95"></div>
+
+    <!-- Konten Utama -->
+    <div class="text-center data-diri">
+        <div class="relative">
+            <img alt="Profile Picture" class="rounded-full mx-auto border-4 border-gray-300 shadow-lg w-40"
+                src="fp.png" />
+        </div>
+        <div class="mt-6 space-y-4 w-full max-w-xl mx-auto">
+            <a href="javascript:void(0)"
+                class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto"
+                onclick="openModal()">
+                <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
+                    <i class="fas fa-user text-white"></i>
+                </div>
+                <span class="text-original relative z-10 ml-4 font-semibold">Jovandry Morgan</span>
+                <span class="hover-text">Tentang Saya</span>
+            </a>
+            <a href="#"
+                class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto">
+                <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
+                    <i class="fas fa-briefcase text-white"></i>
+                </div>
+                <span class="text-original relative z-10 ml-4 font-semibold">Full Stack Developer</span>
+                <span class="hover-text">Portofolio</span>
+            </a>
+            <a href="#"
+                class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto">
+                <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
+                    <i class="fas fa-globe text-white"></i>
+                </div>
+                <span class="text-original relative z-10 ml-4 font-semibold">vanzcode.com</span>
+                <span class="hover-text">Pesan Website</span>
+            </a>
+            <a href="https://wa.me/6282339573409" target="_blank"
+                class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto">
+                <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
+                    <i class="fas fa-phone text-white"></i>
+                </div>
+                <span class="text-original relative z-10 ml-4 font-semibold">+62-823-3957-3409</span>
+                <span class="hover-text">Chat Whatsapp</span>
+            </a>
+            <a href="#"
+                class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto">
+                <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
+                    <i class="fas fa-ellipsis-h text-white"></i>
+                </div>
+                <span class="text-original relative z-10 ml-4 font-semibold">Media Sosial Lainya</span>
+                <span class="hover-text">Klik Disini</span>
+            </a>
+        </div>
+        <div class="h-20"></div>
+    </div>
+
+    <!-- Modal Pop-up -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-header">Tentang Saya</div>
+
+            <!-- Topic 1 -->
+            <div class="topic">
+                <h3>Siapa Saya?</h3>
+                <p>Halo, saya <strong>Jovandry Morgan</strong> biasa dipanggil <strong>Vanz</strong>, Saya seorang
+                    <strong>Full Stack Developer</strong> yang
+                    berfokus
+                    pada pengembangan web dan aplikasi. Saya memiliki pengalaman dalam berbagai teknologi terkini, dan
+                    selalu berusaha menciptakan solusi inovatif dan efektif untuk setiap proyek.
+                </p>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic">
+                <h3>Keahlian Saya</h3>
+                <p>Saya berpengalaman dalam berbagai bahasa pemrograman seperti HTML, CSS, PHP, C++ dan framework,
+                    termasuk JavaScript, React,
+                    Node.js,
+                    dan Laravel. Saya juga memiliki keahlian dalam pengembangan IoT dan aplikasi berbasis web.</p>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic">
+                <h3>Hobi dan Minat</h3>
+                <p>Di luar pekerjaan, saya menyukai mambuat animasi, menonton anime, dan memancing. Minat saya dalam
+                    teknologi
+                    dan
+                    pengembangan aplikasi terus mendorong saya untuk belajar lebih banyak dan mengikuti perkembangan
+                    terbaru
+                    di dunia teknologi.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //    saat modal pop up muncul pastikan dari bawa ke atas
+        function openModal() {
+            document.getElementById('aboutModal').style.display = 'flex';
+
+            setTimeout(function () {
+                document.getElementById('aboutModal').style.bottom = '0';
+            }, 100);
+        }
+
+        function closeModal() {
+            document.getElementById('aboutModal').style.bottom = '-100%';
+            setTimeout(function () {
+                document.getElementById('aboutModal').style.display = 'none';
+            }, 500); // Delay to allow the closing animation to complete
+        }
+
+        // jika klik diluar pop up maka dapat di close
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('aboutModal')) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+
+</html>
