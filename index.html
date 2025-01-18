@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Profile Card - Dark Mode</title>
+    <title>Jovandry Morgan</title>
+    <!-- buat icon untuk website -->
+    <link href="logo1.png" rel="icon" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <style>
@@ -187,6 +189,38 @@
             bottom: -100%;
         }
 
+        /* bagian pop up media sosial */
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            /* Jarak antar ikon */
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+        }
+
+        .icon-data-medsos {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #6a1b9a, #8e44ad);
+            color: white;
+            font-size: 24px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .icon-data-medsos:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
         /* Responsiveness */
         @media (max-width: 768px) {
             .top-logo {
@@ -211,13 +245,13 @@
 
             .data-diri {
                 height: 20px;
-                margin-bottom: 450px;
+                margin-bottom: 470px;
             }
         }
     </style>
 </head>
 
-<body class="flex items-center justify-center min-h-screen relative" translate="no">
+<body class="flex items-center justify-center min-h-screen relative" translate="yes">
     <!-- Logo Kiri -->
     <img alt="Vanz Code Logo" class="top-logo logo-left z-10" src="vanz_code.png" />
 
@@ -234,49 +268,60 @@
     <div class="text-center data-diri">
         <div class="relative">
             <img alt="Profile Picture" class="rounded-full mx-auto border-4 border-gray-300 shadow-lg w-40"
-                src="fp.png" />
+                src="va.png" />
         </div>
-        <div class="mt-6 space-y-4 w-full max-w-xl mx-auto">
+        <div class="mt-10 space-y-4 w-full max-w-xl mx-auto">
             <a href="javascript:void(0)"
                 class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto"
                 onclick="openModal()">
                 <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
                     <i class="fas fa-user text-white"></i>
                 </div>
-                <span class="text-original relative z-10 ml-4 font-semibold">Jovandry Morgan</span>
-                <span class="hover-text">Tentang Saya</span>
+                <span class="text-original relative z-10 ml-4 font-semibold">Vanz Animasi</span>
+                <span class="hover-text">Tentang Saya˙✧👨‍💻</span>
             </a>
-            <a href="#"
+            <a href="https://youtube.com/@VanzAnimasi_777" target="_blank"
                 class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto">
                 <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
-                    <i class="fas fa-briefcase text-white"></i>
+                    <!-- ICON YUTUBE -->
+                    <i class="fab fa-youtube text-white"></i>
                 </div>
-                <span class="text-original relative z-10 ml-4 font-semibold">Full Stack Developer</span>
-                <span class="hover-text">Portofolio</span>
+                <span class="text-original relative z-10 ml-4 font-semibold">@VanzAnimasi_777</span>
+                <span class="hover-text">Subscribe Yuk 😊</span>
             </a>
-            <a href="#"
+            <a href="https://saweria.co/vanzanimasi" target="_blank"
                 class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto">
                 <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
-                    <i class="fas fa-globe text-white"></i>
+                    <!-- icon donasi -->
+                    <i class="fas fa-donate text-white"></i>
                 </div>
-                <span class="text-original relative z-10 ml-4 font-semibold">vanzcode.com</span>
-                <span class="hover-text">Pesan Website</span>
+                <span class="text-original relative z-10 ml-4 font-semibold">Donasi Saweria</span>
+                <span class="hover-text">Semangati Mimin (੭˃ᴗ˂)੭</span>
             </a>
             <a href="https://wa.me/6282339573409" target="_blank"
                 class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto">
                 <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
-                    <i class="fas fa-phone text-white"></i>
+                    <i class="fab fa-whatsapp text-white"></i>
                 </div>
                 <span class="text-original relative z-10 ml-4 font-semibold">+62-823-3957-3409</span>
-                <span class="hover-text">Chat Whatsapp</span>
+                <span class="hover-text">Chat Whatsapp 🗪</span>
             </a>
-            <a href="#"
+            <!-- <a href="#"
                 class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto">
                 <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
                     <i class="fas fa-ellipsis-h text-white"></i>
                 </div>
                 <span class="text-original relative z-10 ml-4 font-semibold">Media Sosial Lainya</span>
                 <span class="hover-text">Klik Disini</span>
+            </a> -->
+            <!-- Tombol Media Sosial -->
+            <a href="javascript:void(0)" onclick="openSocialModal()"
+                class="data-item block relative flex items-center bg-purple-200 rounded-full py-3 px-6 shadow-lg transition w-[280px] mx-auto">
+                <div class="relative z-10 bg-purple-600 rounded-full p-2 icon-data">
+                    <i class="fas fa-share-alt text-white"></i>
+                </div>
+                <span class="text-original relative z-10 ml-4 font-semibold">Media Donasi Lainnya</span>
+                <span class="hover-text">Semangati Mimin (੭˃ᴗ˂)੭</span>
             </a>
         </div>
         <div class="h-20"></div>
@@ -291,60 +336,172 @@
             <!-- Topic 1 -->
             <div class="topic">
                 <h3>Siapa Saya?</h3>
-                <p>Halo, saya <strong>Jovandry Morgan</strong> biasa dipanggil <strong>Vanz</strong>, Saya seorang
-                    <strong>Full Stack Developer</strong> yang
-                    berfokus
-                    pada pengembangan web dan aplikasi. Saya memiliki pengalaman dalam berbagai teknologi terkini, dan
-                    selalu berusaha menciptakan solusi inovatif dan efektif untuk setiap proyek.
-                </p>
+                <p>Halo, saya <strong>Vanz Animasi</strong>, biasa dipanggil <strong>Vanz</strong>. Saya seorang
+                    profesional di bidang animasi dan desain visual. Dengan kreativitas dan perhatian pada detail,
+                    saya menghasilkan karya yang unik menggunakan Alight Motion dan aplikasi desain lainnya.</p>
             </div>
 
             <!-- Topic 2 -->
             <div class="topic">
                 <h3>Keahlian Saya</h3>
-                <p>Saya berpengalaman dalam berbagai bahasa pemrograman seperti HTML, CSS, Js, PHP, C++ dan
-                    termasuk framework JavaScript dan PHP Seperti, React,
-                    Node.js, dan Laravel. Saya juga memiliki keahlian dalam pengembangan IoT dan aplikasi berbasis web.
-                </p>
+                <p>Saya sangat berpengalaman dalam pembuatan animasi dengan berbagai aplikasi seperti Alight Motion,
+                    Adobe After Effects, dan aplikasi desain modern lainnya. Selain itu, saya juga memiliki
+                    keterampilan di bidang pemrograman, menguasai bahasa seperti HTML, CSS, JavaScript, dan PHP,
+                    serta mahir menggunakan framework seperti React dan Node.js untuk mengembangkan aplikasi berbasis
+                    web.</p>
             </div>
 
             <!-- Topic 3 -->
             <div class="topic">
                 <h3>Hobi dan Minat</h3>
-                <p>Di luar pekerjaan, saya menyukai mambuat animasi, menonton anime, dan memancing. Minat saya dalam
-                    teknologi
-                    dan
-                    pengembangan aplikasi terus mendorong saya untuk belajar lebih banyak dan mengikuti perkembangan
-                    terbaru
-                    di dunia teknologi.</p>
+                <p>Selain bekerja, saya memiliki passion besar dalam menciptakan animasi kreatif, mendesain grafik,
+                    dan bereksperimen dengan efek visual baru. Hobi saya ini tidak hanya memberikan kepuasan pribadi
+                    tetapi juga mendukung proyek-proyek saya di dunia animasi dan pengembangan teknologi.</p>
             </div>
         </div>
     </div>
 
-    <script>
-        //    saat modal pop up muncul pastikan dari bawa ke atas
-        function openModal() {
-            document.getElementById('aboutModal').style.display = 'flex';
+    <!-- Modal Media Sosial -->
+    <div id="socialModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeSocialModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-header">Media Donasi</div>
 
+            <!-- Topic 1 -->
+            <div class="topic">
+                <h3 style="text-align: center;"><strong>Deskripsi</strong></h3>
+                <p style="text-align: center;">Jika Anda ingin mendukung karya dan perjalanan saya, Anda dapat
+                    memberikan donasi melalui bank BRI
+                    Dan Akun Dana dibawah ini!
+                </p>
+            </div>
+
+            <!-- Topic 1 -->
+            <div class="topic">
+                <h3><strong>Bank BRI</strong></h3>
+                <ul>
+                    <li><strong>Nomor </strong> : 0039-01-109009-50-4</li>
+                    <li><strong>Nama </strong> : Jovandry Morchan Mere Guju</li>
+                </ul>
+            </div>
+            <!-- Topic 1 -->
+            <div class="topic">
+                <h3><strong>Akun Dana</strong></h3>
+                <ul>
+                    <li><strong>Nomor </strong>: 082-339-573-409 </li>
+                    <li><strong>Nama </strong>: Jovandry Morchan Mere Guju</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <style>
+        /* Styling untuk ikon sosial */
+        .social-link {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+
+        /* Efek perubahan warna pada ikon saat hover */
+        .social-link:hover i {
+            color: white;
+        }
+
+        /* Tooltip untuk semua ikon sosial */
+        .social-link::after {
+            content: attr(title);
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Menampilkan tooltip saat hover */
+        .social-link:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+
+    <script>
+
+        // fungsi untuk logika copyLink yang akan mengcopy link di web ini
+        function copyLink() {
+            const link = window.location.href;
+            navigator.clipboard.writeText(link);
+
+            // Update tooltip setelah berhasil menyalin
+            const copyLinkIcon = document.querySelector('.social-link[title="Salin Link"]');
+            copyLinkIcon.setAttribute('title', 'Berhasil Tersalin!✅');
+
+            // Mengembalikan tooltip ke title semula setelah 2 detik
             setTimeout(function () {
-                document.getElementById('aboutModal').style.bottom = '0';
+                copyLinkIcon.setAttribute('title', 'Salin Link');
+            }, 2000);
+        }
+
+
+        // Fungsi untuk membuka modal "About"
+        function openModal() {
+            const modal = document.getElementById('aboutModal');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.style.bottom = '0';
             }, 100);
         }
 
+        // Fungsi untuk menutup modal "About"
         function closeModal() {
-            document.getElementById('aboutModal').style.bottom = '-100%';
-            setTimeout(function () {
-                document.getElementById('aboutModal').style.display = 'none';
-            }, 500); // Delay to allow the closing animation to complete
+            const modal = document.getElementById('aboutModal');
+            modal.style.bottom = '-100%';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500); // Delay untuk animasi
         }
 
-        // jika klik diluar pop up maka dapat di close
+        // Fungsi untuk membuka modal "Social"
+        function openSocialModal() {
+            const modal = document.getElementById('socialModal');
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.style.bottom = '0';
+            }, 100);
+        }
+
+        // Fungsi untuk menutup modal "Social"
+        function closeSocialModal() {
+            const modal = document.getElementById('socialModal');
+            modal.style.bottom = '-100%';
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 500); // Delay untuk animasi
+        }
+
+        // Gabungkan logika klik di luar modal
         window.onclick = function (event) {
-            if (event.target == document.getElementById('aboutModal')) {
+            const aboutModal = document.getElementById('aboutModal');
+            const socialModal = document.getElementById('socialModal');
+
+            if (event.target === aboutModal) {
                 closeModal();
+            } else if (event.target === socialModal) {
+                closeSocialModal();
             }
         };
     </script>
+
 </body>
 
 </html>
